@@ -31,8 +31,6 @@ In this course, we expect basic knowledge of python programming and git. To refr
 - [Jupyter notebook tutorial](http://cs231n.github.io/ipython-tutorial/)
 - [Introduction to git](https://guides.github.com/introduction/git-handbook/)
 
-If you need help with this, please visit our lab hours.
-
 
 ## Setting up your python environment
 
