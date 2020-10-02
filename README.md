@@ -18,8 +18,8 @@ We will introduce you to classifying images with Convolutional Neural Networks (
 
 
 ## Assignment 3
-We will explore how we can segment an image into foreground and background by using basic segmentation algorithms, such as thresholding and region region growing.
-Furthermore, you will use  binary morphological operations to manipulate the contents of a binary image.
+We will explore how we can segment an image into foreground and background by using basic segmentation algorithms, such as thresholding and region growing.
+Furthermore, you will use binary morphological operations to manipulate the contents of a binary image.
 
 
 
