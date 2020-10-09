@@ -34,6 +34,8 @@ def create_model():
         nn.Linear(28*28*1, 10)
         # No need to include softmax, as this is already combined in the loss function
     )
+    # Transfer model to GPU memory if a GPU is available
+    model = utils.to_cuda(model)
     return model
 
 
@@ -41,6 +43,7 @@ model = create_model()
 
 
 # Test if the model is able to do a single forward pass
+example_images = utils.to_cuda(example_images)
 output = model(example_images)
 print("Output shape:", output.shape)
 expected_shape = (batch_size, 10)  # 10 since mnist has 10 different classes

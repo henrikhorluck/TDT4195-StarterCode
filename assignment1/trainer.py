@@ -6,27 +6,6 @@ import utils
 torch.random.manual_seed(0)
 
 
-class FullyConnectedModel(torch.nn.Module):
-
-    def __init__(self):
-        super().__init__()
-        # We are using 28x28 greyscale images.
-        num_input_nodes = 28*28
-        # Number of classes in the MNIST dataset
-        num_classes = 10
-
-        # Define our model
-        self.classifier = torch.nn.Sequential(
-            torch.nn.Linear(num_input_nodes, num_classes),
-        )
-
-    def forward(self, x):
-        # Runs a forward pass on the images
-        x = x.view(-1, 28*28)
-        out = self.classifier(x)
-        return out
-
-
 class Trainer:
 
     def __init__(self,
@@ -55,14 +34,15 @@ class Trainer:
                               desc=f"Training epoch {epoch}")):
                 # images has shape: [batch_size, 1, 28, 28]
                 # target has shape: [batch_size]
-
+                # Transfer batch to GPU VRAM if a GPU is available.
+                images, target = utils.to_cuda([images, target])
                 # Perform forward pass
                 logits = self.model(images)
 
                 # Compute loss
                 loss = self.loss_function(logits, target)
 
-                avg_loss += loss.detach().item()
+                avg_loss += loss.cpu().detach().item()
                 # Perform backpropagation
                 loss.backward()
 

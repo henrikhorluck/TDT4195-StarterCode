@@ -22,6 +22,7 @@ def compute_loss_and_accuracy(dataloader, model, loss_function):
     with torch.no_grad():  # No need to compute gradient when testing
         for (X_batch, Y_batch) in dataloader:
             # Forward pass the images through our model
+            X_batch, Y_batch = to_cuda([X_batch, Y_batch])
             output_probs = model(X_batch)
             # Compute loss
             loss = loss_function(output_probs, Y_batch)
@@ -31,7 +32,7 @@ def compute_loss_and_accuracy(dataloader, model, loss_function):
             Y_batch = Y_batch.squeeze()
 
             # Update tracking variables
-            loss_avg += loss.item()
+            loss_avg += loss.cpu().item()
             total_steps += 1
             total_correct += (predictions == Y_batch).sum().item()
             total_images += predictions.shape[0]
@@ -66,3 +67,14 @@ def save_im(filepath, im, cmap=None):
             "normalizing to [-1, 1]")
         im = normalize(im)
     plt.imsave(filepath, im, cmap=cmap)
+
+
+def to_cuda(elements):
+    """
+    Transfers all parameters/tensors to GPU memory (cuda) if there is a GPU available
+    """
+    if not torch.cuda.is_available():
+        return elements
+    if isinstance(elements, tuple) or isinstance(elements, list):
+        return [x.cuda() for x in elements]
+    return elements.cuda()
