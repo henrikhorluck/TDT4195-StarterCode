@@ -18,8 +18,8 @@ We will introduce you to classifying images with Convolutional Neural Networks (
 
 
 ## Assignment 3
-We will explore how we can segment an image into foreground and background by using basic segmentation algorithms, such as thresholding and region region growing.
-Furthermore, you will use  binary morphological operations to manipulate the contents of a binary image.
+We will explore how we can segment an image into foreground and background by using basic segmentation algorithms, such as thresholding and region growing.
+Furthermore, you will use binary morphological operations to manipulate the contents of a binary image.
 
 
 
@@ -30,8 +30,6 @@ In this course, we expect basic knowledge of python programming and git. To refr
 - [CS231N Python Numpy Tutorial](http://cs231n.github.io/python-numpy-tutorial/)
 - [Jupyter notebook tutorial](http://cs231n.github.io/ipython-tutorial/)
 - [Introduction to git](https://guides.github.com/introduction/git-handbook/)
-
-If you need help with this, please visit our lab hours.
 
 
 ## Setting up your python environment
