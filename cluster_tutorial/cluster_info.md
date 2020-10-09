@@ -45,6 +45,7 @@ Breaking any of the following rules can cause you to permanently loose access to
 
 - Running any jobs outside a docker container (using the given jupyter lab link is ofcourse allowed) is not allowed.
 - Using the cluster for any jobs which are not part of TDT4195, TDT4265, or TDT17 is not allowed.
+- A single group can only allocate one resource at a time.
 
 
 ## Directories within your docker container
