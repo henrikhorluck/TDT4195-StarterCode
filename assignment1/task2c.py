@@ -27,7 +27,13 @@ def convolve_im(im, kernel,
 
 
 # Define the convolutional kernels
-h_a = np.ones((3, 3)) / 9
+h_b = 1 / 256 * np.array([
+    [1, 4, 6, 4, 1],
+    [4, 16, 24, 16, 4],
+    [6, 24, 36, 24, 6],
+    [4, 16, 24, 16, 4],
+    [1, 4, 6, 4, 1]
+])
 sobel_x = np.array([
     [-1, 0, 1],
     [-2, 0, 2],
@@ -35,7 +41,7 @@ sobel_x = np.array([
 ])
 
 # Convolve images
-im_smoothed = convolve_im(im.copy(), h_a)
+im_smoothed = convolve_im(im.copy(), h_b)
 save_im(output_dir.joinpath("im_smoothed.jpg"), im_smoothed)
 im_sobel = convolve_im(im, sobel_x)
 save_im(output_dir.joinpath("im_sobel.jpg"), im_sobel)
